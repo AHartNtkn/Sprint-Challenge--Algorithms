@@ -96,8 +96,38 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # Cocktail sort
+        while not self.light_is_on():
+            # This light will remain off so long as there's a streak of swaps.
+            self.set_light_on()
+
+            # Get first element
+            self.swap_item()
+
+            # Sweep right
+            while self.can_move_right():
+              self.move_right()
+              if self.compare_item() < 1:
+                self.swap_item()
+              else:
+                self.set_light_off()
+
+            # End of list
+            if self.compare_item() > -1:
+               self.swap_item()
+            self.move_left()
+
+            # Sweep left
+            while self.can_move_left():
+              if self.compare_item() > -1:
+                self.swap_item()
+              else:
+                self.set_light_off()
+              self.move_left()
+
+            # Reset first element
+            self.swap_item()
+
 
 
 if __name__ == "__main__":
