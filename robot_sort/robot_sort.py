@@ -98,7 +98,7 @@ class SortingRobot:
         """
         # Cocktail sort
         while not self.light_is_on():
-            # This light will remain off so long as there's a streak of swaps.
+            # This light will remain on so long as there's a streak of swaps.
             self.set_light_on()
 
             # Get first element
